@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameController : MonoBehaviour {
+    [SerializeField]
+    UIController uiController;
+    public UIController UIController { get {return uiController; } }
 
     private void Awake()
     {

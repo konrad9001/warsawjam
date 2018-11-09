@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : BaseState {
+public class GameState : BaseState, IGameView {
 
     public override void InitState(GameController controller)
     {
         base.InitState(controller);
+        this.gameController.UIController.GameViewController.GameView.listener = this;
+        this.gameController.UIController.GameViewController.GameView.ShowView();
 
     }
 
@@ -18,5 +20,10 @@ public class GameState : BaseState {
     public override void DeinitState(GameController controller)
     {
         base.DeinitState(controller);
+    }
+
+    public void SetMenuState()
+    {
+        gameController.ChangeState(new MenuState());
     }
 }
