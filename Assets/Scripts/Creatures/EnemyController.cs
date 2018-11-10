@@ -9,11 +9,13 @@ public class EnemyController : MonoBehaviour {
 
     [SerializeField]
     private GameObject dynamicParent;
+    [SerializeField]
+    private Camera playerCamera;
 
     public void UpdateEnemySeenStatus()
     {
-        foreach (var val in listOfEnemies)
-            val.UpdateSeenStatus();
+        foreach (BaseEnemy b in listOfEnemies)
+            b.UpdateSeenStatus(playerCamera);
 
     }
 
