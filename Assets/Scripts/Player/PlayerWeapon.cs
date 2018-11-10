@@ -7,6 +7,12 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField] Shotgun shotgun;
     [SerializeField] NegativeCamera negativeCamera;
     [SerializeField] PlayerShooting playerShooting;
+    Weapon currentWeapon;
+
+    private void Start()
+    {
+        currentWeapon = shotgun;
+    }
 
     public void ChangeWeapon()
     {
@@ -45,12 +51,14 @@ public class PlayerWeapon : MonoBehaviour {
 
     void ActivateCamera()
     {
+        currentWeapon = negativeCamera;
         shotgun.DeactivateShotgun();
         negativeCamera.ActivateCamera();
     }
 
     void ActivateShotgun()
     {
+        currentWeapon = shotgun;
         shotgun.ActivateShotgun();
         negativeCamera.DeactiveCamera();
     }
@@ -63,5 +71,10 @@ public class PlayerWeapon : MonoBehaviour {
     public NegativeCamera GetCamera()
     {
         return negativeCamera;
+    }
+
+    public string GetWieldedWeapon()
+    {
+        return currentWeapon.NameOfTheWeapon();
     }
 }

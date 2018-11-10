@@ -16,6 +16,11 @@ public class Player : MonoBehaviour
         CheckIfPlayerShooting();
     }
 
+    public string GetWieldedWeapon()
+    {
+        return playerWeapon.GetWieldedWeapon();
+    }
+
     void MovePlayerLook()
     {
         playerMovement.Move();

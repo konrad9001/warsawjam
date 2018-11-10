@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void DisableRenderers()
+    public void DisableRenderers()
     {
         foreach(BaseEnemy b in listOfEnemies)
         {
@@ -28,7 +28,7 @@ public class EnemyController : MonoBehaviour {
         }
     }
 
-    void EnableMeshes()
+    public void EnableMeshes()
     {
         foreach(BaseEnemy b in listOfEnemies)
         {
