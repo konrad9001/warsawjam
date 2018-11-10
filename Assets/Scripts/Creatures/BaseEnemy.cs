@@ -27,6 +27,8 @@ public class BaseEnemy : MonoBehaviour {
     [SerializeField]
     Collider attackCollider;
 
+    bool seen;
+
     private bool isDead=false;
 
     private void OnEnable()
@@ -41,6 +43,16 @@ public class BaseEnemy : MonoBehaviour {
         return renderer;
     }
 
+    public void UpdateSeenStatus(Camera playerCamera)
+    {
+        Vector3 visTest =playerCamera.WorldToViewportPoint(transform.position);
+        seen = (visTest.x >= 0 && visTest.y >= 0) && (visTest.x <= 1 && visTest.y <= 1) && visTest.z >= 0;
+    }
+
+    public bool GetSeen()
+    {
+        return seen;
+    }
 
     public void UpdateEnemy(Transform playerTransform) {
         Debug.Log(CheckDistance(playerTransform.position, transform.position));

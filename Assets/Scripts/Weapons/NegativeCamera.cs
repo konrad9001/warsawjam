@@ -9,10 +9,33 @@ public class NegativeCamera : Weapon {
     int photosToCompleteChallange = 7;
     float cameraReloadTime = 7f;
     bool isActive = true;
+    public struct GameChallanges
+    {
+        public bool mutantPhotoTaken;
+        public bool slowEnemyPhotoTaken;
+        public bool fastEnemyPhotoTaken;
+        public int enemyKillCounter;
+        public int photographyOfTheVictimsCounter;
+        public float timeOfTheGame;
+    };
+
+    public GameChallanges challenges = new GameChallanges();
+    private void Start()
+    {
+        challenges.mutantPhotoTaken = false;
+        challenges.slowEnemyPhotoTaken = false;
+        challenges.fastEnemyPhotoTaken = false;
+        challenges.enemyKillCounter = 0;
+        challenges.photographyOfTheVictimsCounter = 0;
+        challenges.timeOfTheGame = 0f;
+    }
+
+
     [SerializeField] GameObject negativeEffect;
     [SerializeField] GameObject cameraUI;
     [SerializeField] Text counter;
     [SerializeField] Text timer;
+    [SerializeField] Animator cameraUIAnim;
 
     public void ActivateCamera()
     {
@@ -23,6 +46,8 @@ public class NegativeCamera : Weapon {
 
     public override void UpdateTimer()
     {
+        if(cameraUIAnim.GetBool(Keys.WeaponsAnimations.ON))
+            StartCoroutine(wait());
         cameraReloadTime -= Time.deltaTime;
         timer.text = string.Format("{0:00.00}", cameraReloadTime);
         if (cameraReloadTime < 0)
@@ -82,8 +107,7 @@ public class NegativeCamera : Weapon {
         {
             cameraReloadTime = 7f;
             photosTaken++;
-            if (photosTaken.Equals(photosToCompleteChallange))
-                Debug.Log("Just survive and you will be a winner");
+            cameraUIAnim.SetBool(Keys.WeaponsAnimations.ON, true);
             Debug.Log("Photo taken");
             UpdatePhotoTaken();
         }   
@@ -99,6 +123,12 @@ public class NegativeCamera : Weapon {
     public override void Shoot()
     {
         TakePhoto();
+    }
+
+    IEnumerator wait()
+    {
+        yield return new WaitForSeconds(1f);
+        cameraUIAnim.SetBool(Keys.WeaponsAnimations.ON, false);
     }
 
 }

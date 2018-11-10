@@ -9,7 +9,15 @@ public class EnemyController : MonoBehaviour {
 
     [SerializeField]
     private GameObject dynamicParent;
+    [SerializeField]
+    private Camera playerCamera;
 
+    public void UpdateEnemySeenStatus()
+    {
+        foreach (BaseEnemy b in listOfEnemies)
+            b.UpdateSeenStatus(playerCamera);
+
+    }
 
     public void UpdateEnemies(Transform playerTransform)
     {
