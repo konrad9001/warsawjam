@@ -9,41 +9,14 @@ public class EnemyController : MonoBehaviour {
 
     [SerializeField]
     private GameObject dynamicParent;
+    [SerializeField]
+    private Camera playerCamera;
 
     public void UpdateEnemySeenStatus()
     {
-        foreach (var val in listOfEnemies)
-            val.UpdateSeenStatus();
-    }
+        foreach (BaseEnemy b in listOfEnemies)
+            b.UpdateSeenStatus(playerCamera);
 
-    public bool CheckIfMutantIsSeen()
-    {
-        foreach (var val in listOfEnemies)
-        {
-            if (val.name.Equals("mutant"))
-                return val.GetSeen();
-        }
-        return false;
-    }
-
-    public bool CheckIfNormalIsSeen()
-    {
-        foreach (var val in listOfEnemies)
-        {
-            if (val.name.Equals("normalEnemy"))
-                return val.GetSeen();
-        }
-        return false;
-    }
-
-    public bool CheckIfFastIsSeen()
-    {
-        foreach (var val in listOfEnemies)
-        {
-            if (val.name.Equals("fastEnemy"))
-                return val.GetSeen();
-        }
-        return false;
     }
 
     public void UpdateEnemies(Transform playerTransform)

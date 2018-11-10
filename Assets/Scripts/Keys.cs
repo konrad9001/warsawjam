@@ -18,12 +18,21 @@ public class Keys : MonoBehaviour
         public static string WALK_RUN_BLEND = "WalkRun";
         public static string HIT = "HitTrigger";
 
+        public static string ATTACK_BOOL = "AttackBool";
+        public static string HIT_BOOL = "HitBool";
+        public static string DEATH_BOOL = "DeathBool";
+
     }
 
     public class WeaponsAnimations
     {
         public static string ON = "on";
         public static string RELOAD = "reload";
+    }
+
+    public class Tags
+    {
+        public static string CLAWS = "ClawsCollider";
     }
 
 }

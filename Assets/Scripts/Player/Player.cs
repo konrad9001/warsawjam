@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerWeapon playerWeapon;
     [SerializeField] PlayerShooting playerShooting;
-    [SerializeField] Rigidbody rb; 
+    [SerializeField] Rigidbody rb;
     public IPlayer listener;
     float speed = 5f;
 
@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
         float xMov = Input.GetAxisRaw("Horizontal");
         float yMov = Input.GetAxisRaw("Vertical");
 
-        Vector3 temp = (transform.forward * yMov + transform.right * xMov)*speed * Time.deltaTime;
+        Vector3 temp = (transform.forward * yMov + transform.right * xMov) * speed * Time.deltaTime;
 
         rb.MovePosition(transform.position + temp);
     }
@@ -66,8 +66,13 @@ public class Player : MonoBehaviour
         playerShooting.Shoot();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Player hitted" + collision.collider.name);
+        {
+            if (other.gameObject.tag.Equals(Keys.Tags.CLAWS))
+                listener.PlayerIsDead();
+        }
     }
 }
+
+   
