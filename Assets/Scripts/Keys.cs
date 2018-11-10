@@ -20,4 +20,9 @@ public class Keys : MonoBehaviour
 
     }
 
+    public class WeaponsAnimations
+    {
+        public static string ON = "on";
+    }
+
 }

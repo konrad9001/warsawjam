@@ -8,7 +8,10 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField] NegativeCamera negativeCamera;
     [SerializeField] PlayerShooting playerShooting;
     [SerializeField] GameObject crosshair;
+    [SerializeField] Animator negativeCameraAnimator;
+    [SerializeField] Animator shotgunAnimator;
     Weapon currentWeapon;
+    public bool changingWeapon = false;
 
     private void Start()
     {
@@ -52,18 +55,12 @@ public class PlayerWeapon : MonoBehaviour {
 
     void ActivateCamera()
     {
-        currentWeapon = negativeCamera;
-        shotgun.DeactivateShotgun();
-        negativeCamera.ActivateCamera();
-        crosshair.SetActive(false);
+        StartCoroutine(CameraON());
     }
 
     void ActivateShotgun()
     {
-        currentWeapon = shotgun;
-        shotgun.ActivateShotgun();
-        negativeCamera.DeactiveCamera();
-        crosshair.SetActive(true);
+        StartCoroutine(ShotgunON());
     }
 
     public Shotgun GetShotgun()
@@ -79,5 +76,33 @@ public class PlayerWeapon : MonoBehaviour {
     public string GetWieldedWeapon()
     {
         return currentWeapon.NameOfTheWeapon();
+    }
+
+    public IEnumerator CameraON()
+    {
+        changingWeapon = true;
+        crosshair.SetActive(false);
+        shotgunAnimator.SetBool(Keys.WeaponsAnimations.ON, false);
+        yield return new WaitForSeconds(0.533f);
+        negativeCameraAnimator.SetBool(Keys.WeaponsAnimations.ON, true);
+        yield return new WaitForSeconds(1.1f);
+        currentWeapon = negativeCamera;
+        shotgun.DeactivateShotgun();
+        negativeCamera.ActivateCamera();
+        changingWeapon = false;
+    }
+
+    public IEnumerator ShotgunON()
+    {
+        changingWeapon = true;
+        negativeCamera.DeactiveCamera();
+        currentWeapon = shotgun;
+        negativeCameraAnimator.SetBool(Keys.WeaponsAnimations.ON, false);
+        yield return new WaitForSeconds(1.1f);
+        shotgunAnimator.SetBool(Keys.WeaponsAnimations.ON, true);
+        yield return new WaitForSeconds(0.533f);
+        shotgun.ActivateShotgun();
+        crosshair.SetActive(true);
+        changingWeapon = false;
     }
 }

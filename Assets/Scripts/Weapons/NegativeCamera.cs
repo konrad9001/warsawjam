@@ -16,7 +16,7 @@ public class NegativeCamera : Weapon {
     public void ActivateCamera()
     {
         isActive = true;
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
         ActivateNegativeEffect();
     }
 
@@ -28,7 +28,7 @@ public class NegativeCamera : Weapon {
     public void DeactiveCamera()
     {
         isActive = false;
-        this.gameObject.SetActive(false);
+        //this.gameObject.SetActive(false);
         DeactivateNegativeEffect();
     }
 

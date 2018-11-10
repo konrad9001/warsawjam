@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
 
     void CheckIfPlayerChangingWeapon()
     {
+        if (playerWeapon.changingWeapon)
+            return;
         playerWeapon.ChangeWeapon();
         if (playerWeapon.IsShotgunActive())
             playerShooting.SetCurrentWeapon(playerWeapon.GetShotgun());
