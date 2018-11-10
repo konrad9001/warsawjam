@@ -7,6 +7,7 @@ public class PlayerWeapon : MonoBehaviour {
     [SerializeField] Shotgun shotgun;
     [SerializeField] NegativeCamera negativeCamera;
     [SerializeField] PlayerShooting playerShooting;
+    [SerializeField] GameObject crosshair;
     Weapon currentWeapon;
 
     private void Start()
@@ -54,6 +55,7 @@ public class PlayerWeapon : MonoBehaviour {
         currentWeapon = negativeCamera;
         shotgun.DeactivateShotgun();
         negativeCamera.ActivateCamera();
+        crosshair.SetActive(false);
     }
 
     void ActivateShotgun()
@@ -61,6 +63,7 @@ public class PlayerWeapon : MonoBehaviour {
         currentWeapon = shotgun;
         shotgun.ActivateShotgun();
         negativeCamera.DeactiveCamera();
+        crosshair.SetActive(true);
     }
 
     public Shotgun GetShotgun()

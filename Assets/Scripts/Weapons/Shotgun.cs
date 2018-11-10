@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Shotgun : Weapon {
 
-    [SerializeField] GameObject rifle;
+    [SerializeField] Camera rifle;
 
     int dmg = 1;
     bool isActive = true;
@@ -40,7 +40,7 @@ public class Shotgun : Weapon {
     {
         Debug.Log("ShootingFromShotgun");
         Debug.DrawRay(rifle.transform.position, Vector3.forward, Color.green);
-        if (Physics.Raycast(rifle.transform.position, Vector3.forward,100f, 1024))
+        if (Physics.Raycast(rifle.transform.position, Vector3.forward,40f, 1024))
         { 
             Debug.Log("Damage taken: " + DealDamage());
         }
