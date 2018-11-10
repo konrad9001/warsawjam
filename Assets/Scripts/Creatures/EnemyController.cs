@@ -10,6 +10,12 @@ public class EnemyController : MonoBehaviour {
     [SerializeField]
     private GameObject dynamicParent;
 
+    public void UpdateEnemySeenStatus()
+    {
+        foreach (var val in listOfEnemies)
+            val.UpdateSeenStatus();
+
+    }
 
     public void UpdateEnemies(Transform playerTransform)
     {

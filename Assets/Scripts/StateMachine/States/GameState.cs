@@ -25,6 +25,7 @@ public class GameState : BaseState, IGameView, IPlayer{
             gameController.Player.GetShotgun().Reload();
         gameController.Player.GetPlayerShooting().UpdateTime();
         gameController.Player.GetNegativeCamera().UpdateTimer();
+        gameController.EnemyController.UpdateEnemySeenStatus();
     }
 
     public override void DeinitState(GameController controller)

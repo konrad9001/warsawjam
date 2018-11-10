@@ -24,6 +24,7 @@ public class BaseEnemy : MonoBehaviour {
     Renderer renderer;
     [SerializeField]
     Collider collider;
+    bool seen;
 
     private bool isDead=false;
 
@@ -37,6 +38,17 @@ public class BaseEnemy : MonoBehaviour {
     public Renderer GetRenderer()
     {
         return renderer;
+    }
+
+    public void UpdateSeenStatus()
+    {
+        Vector3 visTest = Camera.main.WorldToViewportPoint(transform.position);
+        seen = (visTest.x >= 0 && visTest.y >= 0) && (visTest.x <= 1 && visTest.y <= 1) && visTest.z >= 0;
+    }
+
+    public bool GetSeen()
+    {
+        return seen;
     }
 
 
