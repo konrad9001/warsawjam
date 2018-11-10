@@ -7,6 +7,8 @@ using UnityEngine;
 public class Shotgun : Weapon {
 
     [SerializeField] Camera rifle;
+    [SerializeField] ParticleSystem shootParticle;
+    [SerializeField] Transform shootPos;
 
     bool isActive = true;
 
@@ -35,6 +37,8 @@ public class Shotgun : Weapon {
     public override void Shoot()
     {
         Debug.Log("ShootingFromShotgun");
+        shootParticle.transform.position = shootPos.position;
+        shootParticle.Play();
         Debug.DrawRay(rifle.transform.position, rifle.transform.forward, Color.green);
         RaycastHit hitOut;
         if (Physics.Raycast(rifle.transform.position, rifle.transform.forward, out hitOut,40f,1024))
