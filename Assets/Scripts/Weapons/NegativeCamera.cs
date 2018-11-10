@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NegativeCamera : MonoBehaviour {
+public class NegativeCamera : Weapon {
 
     int remainingSpace = 5;
     bool isActive = true;
@@ -45,9 +45,22 @@ public class NegativeCamera : MonoBehaviour {
     public void TakePhoto()
     {
         if (remainingSpace > 0)
+        {
             remainingSpace -= 1;
+            Debug.Log("Photo taken");
+        }   
         else
             Debug.Log("Not enough space on camera!");
+    }
+
+    public override string NameOfTheWeapon()
+    {
+        return Keys.Weapons.CAMERA;
+    }
+
+    public override void Shoot()
+    {
+        TakePhoto();
     }
 
 }

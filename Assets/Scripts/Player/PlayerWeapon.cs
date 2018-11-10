@@ -6,6 +6,7 @@ public class PlayerWeapon : MonoBehaviour {
 
     [SerializeField] Shotgun shotgun;
     [SerializeField] NegativeCamera negativeCamera;
+    [SerializeField] PlayerShooting playerShooting;
 
     public void ChangeWeapon()
     {
@@ -32,12 +33,12 @@ public class PlayerWeapon : MonoBehaviour {
         return Input.GetAxis("Mouse ScrollWheel") != 0;
     }
 
-    bool IsShotgunActive()
+    public bool IsShotgunActive()
     {
         return shotgun.IsShotgunActive();
     }
 
-    bool IsCameraActive()
+    public bool IsCameraActive()
     {
         return negativeCamera.IsCameraActive();
     }
@@ -52,5 +53,15 @@ public class PlayerWeapon : MonoBehaviour {
     {
         shotgun.ActivateShotgun();
         negativeCamera.DeactiveCamera();
+    }
+
+    public Shotgun GetShotgun()
+    {
+        return shotgun;
+    }
+
+    public NegativeCamera GetCamera()
+    {
+        return negativeCamera;
     }
 }

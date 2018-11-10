@@ -6,12 +6,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerWeapon playerWeapon;
+    [SerializeField] PlayerShooting playerShooting;
     public IPlayer listener;
 
     public void GetPlayerInput()
     {
         MovePlayerLook();
         CheckIfPlayerChangingWeapon();
+        CheckIfPlayerShooting();
     }
 
     void MovePlayerLook()
@@ -22,6 +24,15 @@ public class Player : MonoBehaviour
     void CheckIfPlayerChangingWeapon()
     {
         playerWeapon.ChangeWeapon();
+        if (playerWeapon.IsShotgunActive())
+            playerShooting.SetCurrentWeapon(playerWeapon.GetShotgun());
+        else
+            playerShooting.SetCurrentWeapon(playerWeapon.GetCamera());
+    }
+
+    void CheckIfPlayerShooting()
+    {
+        playerShooting.Shoot();
     }
 
     private void OnCollisionEnter(Collision collision)
