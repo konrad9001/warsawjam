@@ -16,6 +16,8 @@ public class GameState : BaseState, IGameView, IPlayer {
     public override void UpdateState(GameController controller)
     {
         base.UpdateState(controller);
+        if (Cursor.lockState != CursorLockMode.Locked)
+            Cursor.lockState = CursorLockMode.Locked;
         GetPlayerInput();
         UpdateEnemyStatus();
     }
@@ -23,6 +25,8 @@ public class GameState : BaseState, IGameView, IPlayer {
     public override void DeinitState(GameController controller)
     {
         base.DeinitState(controller);
+        if (Cursor.lockState != CursorLockMode.None)
+            Cursor.lockState = CursorLockMode.None;
     }
 
     public void SetMenuState()
