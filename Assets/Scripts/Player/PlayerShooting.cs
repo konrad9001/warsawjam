@@ -19,13 +19,12 @@ public class PlayerShooting : MonoBehaviour {
             {
                 currentWeapon.Shoot();
                 timeBetweeenShoots = 1f;
-            }
-                
+            }       
     }
 
     public void UpdateTime()
     {
-        timeBetweeenShoots -= Time.deltaTime;
+        timeBetweeenShoots -= Time.deltaTime;        
     }
 
 }

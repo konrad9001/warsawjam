@@ -15,4 +15,7 @@ public class Weapon : MonoBehaviour {
 
     public virtual void Reload()
     { }
+
+    public virtual void UpdateTimer()
+    { }
 }

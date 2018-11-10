@@ -40,6 +40,11 @@ public class Player : MonoBehaviour
         return playerWeapon.GetShotgun();
     }
 
+    public Weapon GetNegativeCamera()
+    {
+        return playerWeapon.GetCamera();
+    }
+
     void MovePlayerLook()
     {
         playerMovement.Move();

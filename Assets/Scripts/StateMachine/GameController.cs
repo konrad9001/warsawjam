@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour {
     EnemyController enemyController;
     public EnemyController EnemyController { get { return enemyController; } }
 
+    public GameObject cam;
+    public GameObject gun;
+
 
     private void Awake()
     {
