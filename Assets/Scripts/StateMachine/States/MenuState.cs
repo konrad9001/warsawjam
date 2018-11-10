@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuState : BaseState, IMenuView {
-
+    float time = 2.5f;
+    bool start = false;
     public override void InitState(GameController controller)
     {
         base.InitState(controller);
@@ -14,6 +15,8 @@ public class MenuState : BaseState, IMenuView {
     public override void UpdateState(GameController controller)
     {
         base.UpdateState(controller);
+        if (start)
+            SettingGameState();
     }
 
     public override void DeinitState(GameController controller)
@@ -23,6 +26,18 @@ public class MenuState : BaseState, IMenuView {
 
     public void SetGameState()
     {
-        gameController.ChangeState(new GameState());
+        //gameController.ChangeState(new GameState());
+        start = true;
+    }
+
+    void SettingGameState()
+    {
+        time -= Time.deltaTime;
+        if (time < 0)
+        {
+            gameController.UIController.MenuViewController.MenuView.HideView();
+            gameController.ChangeState(new GameState());
+            start = false;
+        }
     }
 }

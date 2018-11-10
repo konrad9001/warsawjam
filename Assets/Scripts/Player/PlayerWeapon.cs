@@ -81,11 +81,12 @@ public class PlayerWeapon : MonoBehaviour {
     public IEnumerator CameraON()
     {
         changingWeapon = true;
+        negativeCamera.gameObject.SetActive(true);
         crosshair.SetActive(false);
         shotgunAnimator.SetBool(Keys.WeaponsAnimations.ON, false);
         yield return new WaitForSeconds(0.533f);
         negativeCameraAnimator.SetBool(Keys.WeaponsAnimations.ON, true);
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.8f);
         currentWeapon = negativeCamera;
         shotgun.DeactivateShotgun();
         negativeCamera.ActivateCamera();
