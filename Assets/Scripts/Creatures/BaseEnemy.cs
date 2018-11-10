@@ -55,7 +55,7 @@ public class BaseEnemy : MonoBehaviour {
     }
 
     public void UpdateEnemy(Transform playerTransform) {
-        Debug.Log(CheckDistance(playerTransform.position, transform.position));
+        //Debug.Log(CheckDistance(playerTransform.position, transform.position));
         if (isDead) return;
         if (CheckDistance(playerTransform.position, transform.position) <= distanceToAttack)
             Attack();

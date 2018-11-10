@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : BaseState, IGameView, IPlayer{
+public class GameState : BaseState, IGameView, IPlayer, INegativeCamera{
 
     public override void InitState(GameController controller)
     {
@@ -12,6 +12,7 @@ public class GameState : BaseState, IGameView, IPlayer{
         this.gameController.Player.listener = this;
         gameController.EnemyController.DisableRenderers();
         gameController.gun.gameObject.SetActive(true);
+        this.gameController.Player.GetComponent<PlayerWeapon>().GetCamera().listener = this;
     }
 
     public override void UpdateState(GameController controller)
@@ -66,4 +67,18 @@ public class GameState : BaseState, IGameView, IPlayer{
         Debug.LogError("PlayerIsDead, but nothing happens!!! Karol Pozdrawia :*");
     }
 
+    public bool CheckMutant()
+    {
+        return gameController.EnemyController.CheckIfMutant();
+    }
+
+    public bool CheckNormal()
+    {
+        return gameController.EnemyController.CheckIfSlow();
+    }
+
+    public bool CheckFast()
+    {
+        return gameController.EnemyController.CheckIfFast();
+    }
 }
