@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsDownLimitRaised(Vector3 clampedRotation)
     {
-        return clampedRotation.x > 30f && clampedRotation.x < 40f;
+        return clampedRotation.x > 30f && clampedRotation.x < 200f;
     }
 
     void LockDownRotation(Vector3 clampedRotation)
@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsUpLimitRaised(Vector3 clampedRotation)
     {
-        return clampedRotation.x < 330f && clampedRotation.x > 320f;
+        return clampedRotation.x < 330f && clampedRotation.x > 200f;
     }
 
     void LockUpRotation(Vector3 clampedRotation)

@@ -10,12 +10,14 @@ public class GameState : BaseState, IGameView, IPlayer {
         this.gameController.UIController.GameViewController.GameView.listener = this;
         this.gameController.UIController.GameViewController.GameView.ShowView();
         this.gameController.Player.listener = this;
+        gameController.EnemyController.DisableRenderers();
     }
 
     public override void UpdateState(GameController controller)
     {
         base.UpdateState(controller);
         GetPlayerInput();
+        UpdateEnemyStatus();
     }
 
     public override void DeinitState(GameController controller)
@@ -31,6 +33,19 @@ public class GameState : BaseState, IGameView, IPlayer {
     public void GetPlayerInput()
     {
         gameController.Player.GetPlayerInput();
+    }
+
+    public void UpdateEnemyStatus()
+    {
+        if (gameController.Player.GetWieldedWeapon().Equals(Keys.Weapons.SHOTGUN))
+        {
+            gameController.EnemyController.DisableRenderers();
+        }
+        else
+        {
+            gameController.EnemyController.EnableMeshes();
+        }
+
     }
 
 }
