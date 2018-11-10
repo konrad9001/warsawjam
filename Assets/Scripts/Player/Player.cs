@@ -7,13 +7,22 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] PlayerWeapon playerWeapon;
     [SerializeField] PlayerShooting playerShooting;
+    [SerializeField] Rigidbody rb; 
     public IPlayer listener;
+    float speed = 5f;
 
     public void GetPlayerInput()
     {
         MovePlayerLook();
         CheckIfPlayerChangingWeapon();
         CheckIfPlayerShooting();
+
+        float xMov = Input.GetAxisRaw("Horizontal");
+        float yMov = Input.GetAxisRaw("Vertical");
+
+        Vector3 temp = (transform.forward * yMov + transform.right * xMov)*speed * Time.deltaTime;
+
+        rb.MovePosition(transform.position + temp);
     }
 
     public string GetWieldedWeapon()
