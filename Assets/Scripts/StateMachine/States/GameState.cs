@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : BaseState, IGameView, IPlayer {
+public class GameState : BaseState, IGameView, IPlayer{
 
     public override void InitState(GameController controller)
     {
@@ -50,6 +50,7 @@ public class GameState : BaseState, IGameView, IPlayer {
             gameController.EnemyController.EnableMeshes();
         }
 
+        gameController.EnemyController.UpdateEnemies(gameController.Player.gameObject.transform);
     }
 
 }

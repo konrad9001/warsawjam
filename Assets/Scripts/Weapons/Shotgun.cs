@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿
+
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +8,6 @@ public class Shotgun : Weapon {
 
     [SerializeField] Camera rifle;
 
-    int dmg = 1;
     bool isActive = true;
 
     public void ActivateShotgun()
@@ -19,11 +20,6 @@ public class Shotgun : Weapon {
     {
         isActive = false;
         this.gameObject.SetActive(false);
-    }
-
-    public int DealDamage()
-    {
-        return dmg;
     }
 
     public bool IsShotgunActive()
@@ -40,9 +36,11 @@ public class Shotgun : Weapon {
     {
         Debug.Log("ShootingFromShotgun");
         Debug.DrawRay(rifle.transform.position, Vector3.forward, Color.green);
-        if (Physics.Raycast(rifle.transform.position, Vector3.forward,40f, 1024))
-        { 
-            Debug.Log("Damage taken: " + DealDamage());
+        RaycastHit hitOut;
+        if (Physics.Raycast(rifle.transform.position, Vector3.forward, out hitOut,40f,1024))
+        {
+            hitOut.collider.gameObject.GetComponent<BaseEnemy>().Hit();
+            Debug.Log("Damage!");
         }
     }
 }

@@ -64,13 +64,23 @@ public class BaseEnemy : MonoBehaviour {
     {
         Debug.Log("Walking");
         navAgent.destination=(playerTransform.position);
-        Debug.LogError("No animator trigger in Walk in " + this.ToString());
+        animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 0.5f);
     }
 
     private void Run(Transform playerTransform) {
         Debug.Log("Running");
         navAgent.destination = (playerTransform.position);
-        Debug.LogError("No animator trigger in Run in " + this.ToString());
+        animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 1f);
+        //StartCoroutine(WalkToRunCoroutine());
+    }
+
+    IEnumerator WalkToRunCoroutine()
+    {
+        for(float i=1;i<=1f;i+=0.05f)
+        {
+            animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, i);
+            yield return null;
+        }
     }
 
     private void Attack() {
@@ -80,12 +90,13 @@ public class BaseEnemy : MonoBehaviour {
 
     public void Hit()
     {
-        this.hp--;
+        animator.SetTrigger(Keys.EnemyAnimations.HIT);
+        if(hp >0) this.hp--;
         if (hp <= 0) Death();
     }
 
     private void Death() {
-        Debug.LogError("No animator trigger in Death in " + this.ToString());
+        animator.SetTrigger(Keys.EnemyAnimations.DEATH);
         isDead = true;
         //Destroy(this.gameObject);
     }

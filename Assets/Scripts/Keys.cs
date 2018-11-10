@@ -14,6 +14,9 @@ public class Keys : MonoBehaviour
     public class EnemyAnimations
     {
         public static string ATTACK = "AttackTrigger";
+        public static string DEATH = "Death";
+        public static string WALK_RUN_BLEND = "WalkRun";
+        public static string HIT = "HitTrigger";
 
     }
 
