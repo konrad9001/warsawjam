@@ -11,6 +11,8 @@ public class GameState : BaseState, IGameView, IPlayer{
         this.gameController.UIController.GameViewController.GameView.ShowView();
         this.gameController.Player.listener = this;
         gameController.EnemyController.DisableRenderers();
+        gameController.cam.gameObject.SetActive(true);
+        gameController.gun.gameObject.SetActive(true);
     }
 
     public override void UpdateState(GameController controller)
@@ -31,6 +33,8 @@ public class GameState : BaseState, IGameView, IPlayer{
         base.DeinitState(controller);
         if (Cursor.lockState != CursorLockMode.None)
             Cursor.lockState = CursorLockMode.None;
+        gameController.cam.gameObject.SetActive(false);
+        gameController.gun.gameObject.SetActive(false);
     }
 
     public void SetMenuState()

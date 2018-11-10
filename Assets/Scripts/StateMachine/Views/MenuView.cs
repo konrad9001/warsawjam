@@ -22,4 +22,10 @@ public class MenuView : BaseView {
         HideView();
         listener.SetGameState();
     }
+
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
+    
 }

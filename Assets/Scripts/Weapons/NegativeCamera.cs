@@ -82,7 +82,7 @@ public class NegativeCamera : Weapon {
         {
             cameraReloadTime = 7f;
             photosTaken++;
-            if (photosTaken.Equals(photosToCompleteChallange+))
+            if (photosTaken.Equals(photosToCompleteChallange))
                 Debug.Log("Just survive and you will be a winner");
             Debug.Log("Photo taken");
             UpdatePhotoTaken();
