@@ -3788,6 +3788,36 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 0.90637267
       objectReference: {fileID: 0}
+    - target: {fileID: 195949268332770394, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195952393246497744, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195250364269439162, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: m_ObstacleAvoidanceType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195250364269439162, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: m_WalkableMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195949268332770394, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: m_WalkableMask
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 195952393246497744, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: m_WalkableMask
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
   m_IsPrefabAsset: 0

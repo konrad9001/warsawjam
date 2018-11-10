@@ -42,14 +42,15 @@ public class BaseEnemy : MonoBehaviour {
 
     public void UpdateEnemy(Transform playerTransform) {
         if (isDead) return;
-        if (CheckDistance(playerTransform.position, transform.position, distanceToAttack))
-        {
-            StopNavAgent();
-            Attack();
-        }
-        else if (CheckDistance(playerTransform.position, transform.position, distanceToRun))
-            Run(playerTransform);
-        else Walk(playerTransform);
+        //if (CheckDistance(playerTransform.position, transform.position, distanceToAttack))
+        //{
+        //    StopNavAgent();
+        //    Attack();
+        //}
+        //else if (CheckDistance(playerTransform.position, transform.position, distanceToRun))
+        //    Run(playerTransform);
+        //else Walk(playerTransform);
+        Run(playerTransform);
     }
 
     private bool CheckDistance(Vector3 a, Vector3 b, float limit)
@@ -91,9 +92,11 @@ public class BaseEnemy : MonoBehaviour {
     public void Hit()
     {
         Debug.Log("Hit on: " + this.ToString());
-        animator.SetTrigger(Keys.EnemyAnimations.HIT);
-        if(hp >0) this.hp--;
-        if (hp <= 0) Death();
+        hp--;
+        if (hp <= 0)
+            Death();
+        else
+            animator.SetTrigger(Keys.EnemyAnimations.HIT);
     }
 
     private void Death() {
