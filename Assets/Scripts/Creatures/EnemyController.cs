@@ -14,7 +14,36 @@ public class EnemyController : MonoBehaviour {
     {
         foreach (var val in listOfEnemies)
             val.UpdateSeenStatus();
+    }
 
+    public bool CheckIfMutantIsSeen()
+    {
+        foreach (var val in listOfEnemies)
+        {
+            if (val.name.Equals("mutant"))
+                return val.GetSeen();
+        }
+        return false;
+    }
+
+    public bool CheckIfNormalIsSeen()
+    {
+        foreach (var val in listOfEnemies)
+        {
+            if (val.name.Equals("normalEnemy"))
+                return val.GetSeen();
+        }
+        return false;
+    }
+
+    public bool CheckIfFastIsSeen()
+    {
+        foreach (var val in listOfEnemies)
+        {
+            if (val.name.Equals("fastEnemy"))
+                return val.GetSeen();
+        }
+        return false;
     }
 
     public void UpdateEnemies(Transform playerTransform)

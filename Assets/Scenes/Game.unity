@@ -1738,6 +1738,21 @@ Prefab:
       propertyPath: dynamicParent
       value: 
       objectReference: {fileID: 124804066}
+    - target: {fileID: 114092278093536232, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 557602397}
+    - target: {fileID: 114535759527631466, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 557602397}
+    - target: {fileID: 114863010813222732, guid: 093a96024c65c0a4db0a53c78c384d10,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 557602397}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
   m_IsPrefabAsset: 0

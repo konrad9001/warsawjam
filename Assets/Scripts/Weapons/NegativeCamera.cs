@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class NegativeCamera : Weapon {
 
+    public INegativeCamera listener;
     int photosTaken = 0;
     int photosToCompleteChallange = 7;
     float cameraReloadTime = 7f;
@@ -107,9 +108,15 @@ public class NegativeCamera : Weapon {
         {
             cameraReloadTime = 7f;
             photosTaken++;
+            CheckIfMutantIsOnFoto();
+            CheckIfFastEnemyIsOnThePhoto();
+            CheckIfNormalEnemyIsOnThePhoto();
             cameraUIAnim.SetBool(Keys.WeaponsAnimations.ON, true);
             Debug.Log("Photo taken");
             UpdatePhotoTaken();
+            Debug.Log(challenges.mutantPhotoTaken);
+            Debug.Log(challenges.fastEnemyPhotoTaken);
+            Debug.Log(challenges.slowEnemyPhotoTaken);
         }   
         else
             Debug.Log("Camera is not ready yet");
@@ -129,6 +136,24 @@ public class NegativeCamera : Weapon {
     {
         yield return new WaitForSeconds(1f);
         cameraUIAnim.SetBool(Keys.WeaponsAnimations.ON, false);
+    }
+
+    public void CheckIfMutantIsOnFoto()
+    {
+        if (listener.CheckMutant())
+            challenges.mutantPhotoTaken = true;
+    }
+
+    public void CheckIfNormalEnemyIsOnThePhoto()
+    {
+        if(listener.CheckNormal())
+            challenges.slowEnemyPhotoTaken = true;
+    }
+
+    public void CheckIfFastEnemyIsOnThePhoto()
+    {
+        if (listener.CheckFast())
+            challenges.fastEnemyPhotoTaken = true;
     }
 
 }
