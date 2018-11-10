@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-
     [SerializeField] float speed = 350f;
-    [SerializeField] Rigidbody rb;
-    [SerializeField] Camera cam;
+    [SerializeField] Rigidbody playerRigidbody;
+    [SerializeField] Camera mainCamera;
 
     public void Move()
     {
@@ -16,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     void GetPlayerMove()
     {
-         MoveCamera();
+        MoveCamera();
     }
 
     void MoveCamera()
@@ -29,28 +28,49 @@ public class PlayerMovement : MonoBehaviour
     {
         float yRotation = Input.GetAxisRaw("Mouse X");
         Vector3 rotation = new Vector3(0f, yRotation, 0f) * speed * Time.deltaTime;
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(rotation));
+        playerRigidbody.MoveRotation(playerRigidbody.rotation * Quaternion.Euler(rotation));
     }
 
     void LookUpDown()
     {
         float xRotation = Input.GetAxisRaw("Mouse Y");
         Vector3 cameraRotation = new Vector3(xRotation * speed * Time.deltaTime, 0f, 0f) ;
-        cam.transform.Rotate(-cameraRotation);
+        mainCamera.transform.Rotate(-cameraRotation);
+        CheckCameraRotationLimits();
+    }
 
-        Vector3 clampedRotation = cam.transform.eulerAngles;
-        if (clampedRotation.x > 30f && clampedRotation.x < 40f)
+    void CheckCameraRotationLimits()
+    {
+        Vector3 clampedRotation = mainCamera.transform.eulerAngles;
+        if (IsDownLimitRaised(clampedRotation))
         {
-            clampedRotation.x = 30f;
-            cam.transform.rotation = Quaternion.Euler(clampedRotation);
+            LockDownRotation(clampedRotation);
         }
-        else if (clampedRotation.x < 330f && clampedRotation.x > 320f)
+        else if (IsUpLimitRaised(clampedRotation))
         {
-            clampedRotation.x = 330f;
-            cam.transform.rotation = Quaternion.Euler(clampedRotation);
+            LockUpRotation(clampedRotation);
         }
-            
-        
+    }
 
+    bool IsDownLimitRaised(Vector3 clampedRotation)
+    {
+        return clampedRotation.x > 30f && clampedRotation.x < 40f;
+    }
+
+    void LockDownRotation(Vector3 clampedRotation)
+    {
+        clampedRotation.x = 30f;
+        mainCamera.transform.rotation = Quaternion.Euler(clampedRotation);
+    }
+
+    bool IsUpLimitRaised(Vector3 clampedRotation)
+    {
+        return clampedRotation.x < 330f && clampedRotation.x > 320f;
+    }
+
+    void LockUpRotation(Vector3 clampedRotation)
+    {
+        clampedRotation.x = 330f;
+        mainCamera.transform.rotation = Quaternion.Euler(clampedRotation);
     }
 }

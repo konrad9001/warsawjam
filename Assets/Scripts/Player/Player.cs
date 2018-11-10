@@ -5,16 +5,34 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] PlayerWeapon playerWeapon;
+    [SerializeField] PlayerShooting playerShooting;
     public IPlayer listener;
 
-    public void GetInputMovement()
+    public void GetPlayerInput()
     {
         MovePlayerLook();
+        CheckIfPlayerChangingWeapon();
+        CheckIfPlayerShooting();
     }
 
     void MovePlayerLook()
     {
         playerMovement.Move();
+    }
+
+    void CheckIfPlayerChangingWeapon()
+    {
+        playerWeapon.ChangeWeapon();
+        if (playerWeapon.IsShotgunActive())
+            playerShooting.SetCurrentWeapon(playerWeapon.GetShotgun());
+        else
+            playerShooting.SetCurrentWeapon(playerWeapon.GetCamera());
+    }
+
+    void CheckIfPlayerShooting()
+    {
+        playerShooting.Shoot();
     }
 
     private void OnCollisionEnter(Collision collision)
