@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuView : BaseView {
 
     public IMenuView listener;
+    [SerializeField] Animator menuViewAnimator;
 
 
     public override void ShowView()
@@ -19,7 +20,8 @@ public class MenuView : BaseView {
 
     public void SetGameState()
     {
-        HideView();
+        menuViewAnimator.SetBool(Keys.WeaponsAnimations.ON, true);
+        //HideView();
         listener.SetGameState();
     }
 

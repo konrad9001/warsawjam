@@ -11,7 +11,6 @@ public class GameState : BaseState, IGameView, IPlayer{
         this.gameController.UIController.GameViewController.GameView.ShowView();
         this.gameController.Player.listener = this;
         gameController.EnemyController.DisableRenderers();
-        gameController.cam.gameObject.SetActive(true);
         gameController.gun.gameObject.SetActive(true);
     }
 
