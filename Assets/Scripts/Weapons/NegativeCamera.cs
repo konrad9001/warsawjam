@@ -7,7 +7,7 @@ public class NegativeCamera : Weapon {
     int remainingSpace = 5;
     bool isActive = true;
     [SerializeField] GameObject negativeEffect;
-
+    [SerializeField] GameObject cameraUI;
     public void SetCameraSpace(int value)
     {
         remainingSpace = value;
@@ -16,7 +16,7 @@ public class NegativeCamera : Weapon {
     public void ActivateCamera()
     {
         isActive = true;
-        //this.gameObject.SetActive(true);
+        cameraUI.SetActive(true);
         ActivateNegativeEffect();
     }
 
@@ -28,7 +28,7 @@ public class NegativeCamera : Weapon {
     public void DeactiveCamera()
     {
         isActive = false;
-        //this.gameObject.SetActive(false);
+        cameraUI.SetActive(false);
         DeactivateNegativeEffect();
     }
 

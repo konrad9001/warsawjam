@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerShooting : MonoBehaviour {
 
     Weapon currentWeapon;
+    float timeBetweeenShoots = -1f;
 
     public void SetCurrentWeapon(Weapon newWeapon)
     {
@@ -13,8 +14,18 @@ public class PlayerShooting : MonoBehaviour {
 
     public void Shoot()
     {
-        if(Input.GetMouseButtonDown(0))
-            currentWeapon.Shoot();
+        if (timeBetweeenShoots < 0)
+            if (Input.GetMouseButtonDown(0))
+            {
+                currentWeapon.Shoot();
+                timeBetweeenShoots = 1f;
+            }
+                
+    }
+
+    public void UpdateTime()
+    {
+        timeBetweeenShoots -= Time.deltaTime;
     }
 
 }

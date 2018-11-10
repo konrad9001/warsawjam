@@ -20,6 +20,9 @@ public class GameState : BaseState, IGameView, IPlayer{
             Cursor.lockState = CursorLockMode.Locked;
         GetPlayerInput();
         UpdateEnemyStatus();
+        if (gameController.Player.GetWieldedWeapon().Equals(Keys.Weapons.SHOTGUN))
+            gameController.Player.GetShotgun().Reload();
+        gameController.Player.GetPlayerShooting().UpdateTime();
     }
 
     public override void DeinitState(GameController controller)

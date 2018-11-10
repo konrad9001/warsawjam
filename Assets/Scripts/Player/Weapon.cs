@@ -12,4 +12,7 @@ public class Weapon : MonoBehaviour {
     public virtual void Shoot()
     {
     }
+
+    public virtual void Reload()
+    { }
 }

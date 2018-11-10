@@ -21,6 +21,16 @@ public class Player : MonoBehaviour
         return playerWeapon.GetWieldedWeapon();
     }
 
+    public PlayerShooting GetPlayerShooting()
+    {
+        return playerShooting;
+    }
+
+    public Weapon GetShotgun()
+    {
+        return playerWeapon.GetShotgun();
+    }
+
     void MovePlayerLook()
     {
         playerMovement.Move();
