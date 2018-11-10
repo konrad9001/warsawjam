@@ -11,6 +11,10 @@ public class GameController : MonoBehaviour {
     Player player;
     public Player Player { get { return player; } }
 
+    [SerializeField]
+    EnemyController enemyController;
+    public EnemyController EnemyController { get { return enemyController; } }
+
 
     private void Awake()
     {

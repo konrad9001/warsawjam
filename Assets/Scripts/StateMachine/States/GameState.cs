@@ -16,6 +16,8 @@ public class GameState : BaseState, IGameView, IPlayer {
     {
         base.UpdateState(controller);
         MovePlayerView();
+        MoveEnemies();
+        Debug.Log("Updating GameState");
     }
 
     public override void DeinitState(GameController controller)
@@ -31,6 +33,11 @@ public class GameState : BaseState, IGameView, IPlayer {
     public void MovePlayerView()
     {
         gameController.Player.GetInputMovement();
+    }
+
+    public void MoveEnemies()
+    {
+        gameController.EnemyController.UpdateEnemies(gameController.Player.gameObject.transform);
     }
 
 }
