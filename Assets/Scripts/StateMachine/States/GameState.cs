@@ -23,6 +23,7 @@ public class GameState : BaseState, IGameView, IPlayer{
         if (gameController.Player.GetWieldedWeapon().Equals(Keys.Weapons.SHOTGUN))
             gameController.Player.GetShotgun().Reload();
         gameController.Player.GetPlayerShooting().UpdateTime();
+        gameController.Player.GetNegativeCamera().UpdateTimer();
     }
 
     public override void DeinitState(GameController controller)

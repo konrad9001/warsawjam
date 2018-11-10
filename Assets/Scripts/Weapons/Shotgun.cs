@@ -39,11 +39,6 @@ public class Shotgun : Weapon
 
     public override void Shoot()
     {
-        if (!isReloaded)
-        {
-            Debug.Log("You must reload your weapon first");
-            return;
-        }
         isReloaded = false;
         Debug.Log("ShootingFromShotgun");
         shootParticle.transform.position = shootPos.position;
@@ -59,9 +54,7 @@ public class Shotgun : Weapon
 
     public override void Reload()
     {
-        if (isReloaded)
-
-            return;
+        if(!isReloaded)
             StartCoroutine(ReloadWeapon());
     }
 
