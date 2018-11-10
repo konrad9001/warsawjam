@@ -15,7 +15,6 @@ public class EnemyController : MonoBehaviour {
     {
         foreach(BaseEnemy b in listOfEnemies)
         {
-            Debug.Log("Updating Enemies");
             b.UpdateEnemy(playerTransform);
         }
     }

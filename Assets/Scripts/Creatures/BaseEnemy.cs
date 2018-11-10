@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Assertions;
 
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator))]
+[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Collider))]
 public class BaseEnemy : MonoBehaviour {
 
     [SerializeField, ]
@@ -22,6 +22,8 @@ public class BaseEnemy : MonoBehaviour {
     Animator animator;
     [SerializeField]
     Renderer renderer;
+    [SerializeField]
+    Collider collider;
 
     private bool isDead=false;
 
@@ -37,8 +39,8 @@ public class BaseEnemy : MonoBehaviour {
         return renderer;
     }
 
+
     public void UpdateEnemy(Transform playerTransform) {
-        Debug.Log("Updating "+this.ToString());
         if (isDead) return;
         if (CheckDistance(playerTransform.position, transform.position, distanceToAttack))
         {
@@ -62,13 +64,11 @@ public class BaseEnemy : MonoBehaviour {
 
     private void Walk(Transform playerTransform)
     {
-        Debug.Log("Walking");
         navAgent.destination=(playerTransform.position);
         animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 0.5f);
     }
 
     private void Run(Transform playerTransform) {
-        Debug.Log("Running");
         navAgent.destination = (playerTransform.position);
         animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 1f);
         //StartCoroutine(WalkToRunCoroutine());
@@ -90,6 +90,7 @@ public class BaseEnemy : MonoBehaviour {
 
     public void Hit()
     {
+        Debug.Log("Hit on: " + this.ToString());
         animator.SetTrigger(Keys.EnemyAnimations.HIT);
         if(hp >0) this.hp--;
         if (hp <= 0) Death();
@@ -98,6 +99,7 @@ public class BaseEnemy : MonoBehaviour {
     private void Death() {
         animator.SetTrigger(Keys.EnemyAnimations.DEATH);
         isDead = true;
+        this.collider.enabled = false;
         //Destroy(this.gameObject);
     }
 

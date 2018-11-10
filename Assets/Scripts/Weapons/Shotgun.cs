@@ -35,9 +35,9 @@ public class Shotgun : Weapon {
     public override void Shoot()
     {
         Debug.Log("ShootingFromShotgun");
-        Debug.DrawRay(rifle.transform.position, Vector3.forward, Color.green);
+        Debug.DrawRay(rifle.transform.position, rifle.transform.forward, Color.green);
         RaycastHit hitOut;
-        if (Physics.Raycast(rifle.transform.position, Vector3.forward, out hitOut,40f,1024))
+        if (Physics.Raycast(rifle.transform.position, rifle.transform.forward, out hitOut,40f,1024))
         {
             hitOut.collider.gameObject.GetComponent<BaseEnemy>().Hit();
             Debug.Log("Damage!");
