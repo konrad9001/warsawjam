@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Keys : MonoBehaviour {
+public class Keys : MonoBehaviour
+{
 
     public class Weapons
     {
         public static string SHOTGUN = "shotgun";
         public static string CAMERA = "camera";
     }
+
+    public class EnemyAnimations
+    {
+        public static string ATTACK = "AttackTrigger";
+
+    }
+
 }
