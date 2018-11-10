@@ -61,4 +61,9 @@ public class GameState : BaseState, IGameView, IPlayer{
         gameController.EnemyController.UpdateEnemies(gameController.Player.gameObject.transform);
     }
 
+    public void PlayerIsDead()
+    {
+        Debug.LogError("PlayerIsDead, but nothing happens!!! Karol Pozdrawia :*");
+    }
+
 }

@@ -24,6 +24,8 @@ public class BaseEnemy : MonoBehaviour {
     Renderer renderer;
     [SerializeField]
     Collider collider;
+    [SerializeField]
+    Collider attackCollider;
 
     private bool isDead=false;
 
@@ -41,21 +43,12 @@ public class BaseEnemy : MonoBehaviour {
 
 
     public void UpdateEnemy(Transform playerTransform) {
+        Debug.Log(CheckDistance(playerTransform.position, transform.position));
         if (isDead) return;
-        //if (CheckDistance(playerTransform.position, transform.position, distanceToAttack))
-        //{
-        //    StopNavAgent();
-        //    Attack();
-        //}
-        //else if (CheckDistance(playerTransform.position, transform.position, distanceToRun))
-        //    Run(playerTransform);
-        //else Walk(playerTransform);
-        Run(playerTransform);
-    }
-
-    private bool CheckDistance(Vector3 a, Vector3 b, float limit)
-    {
-        return Vector3.Distance(a, b) <= limit;
+        if (CheckDistance(playerTransform.position, transform.position) <= distanceToAttack)
+            Attack();
+        else
+            MoveToPlayer(playerTransform);
     }
 
     private void StopNavAgent()
@@ -63,30 +56,25 @@ public class BaseEnemy : MonoBehaviour {
         navAgent.isStopped = true;
     }
 
-    private void Walk(Transform playerTransform)
-    {
-        navAgent.destination=(playerTransform.position);
-        animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 0.5f);
+    private void MoveToPlayer(Transform playerTransform) {
+        //navAgent.isStopped = false;
+        this.animator.SetBool(Keys.EnemyAnimations.ATTACK_BOOL, false);
+        this.animator.SetBool(Keys.EnemyAnimations.HIT_BOOL, false);
+
+        navAgent.SetDestination(playerTransform.position);
+        animator.SetFloat(
+            Keys.EnemyAnimations.WALK_RUN_BLEND, 
+            Mathf.Clamp(CheckDistance(transform.position,playerTransform.position),0f,1f));        
     }
 
-    private void Run(Transform playerTransform) {
-        navAgent.destination = (playerTransform.position);
-        animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 1f);
-        //StartCoroutine(WalkToRunCoroutine());
-    }
-
-    IEnumerator WalkToRunCoroutine()
+    private float CheckDistance(Vector3 a, Vector3 b)
     {
-        for(float i=1;i<=1f;i+=0.05f)
-        {
-            animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, i);
-            yield return null;
-        }
+        return Vector3.Distance(a, b);
     }
 
     private void Attack() {
         navAgent.isStopped = true;
-        this.animator.SetTrigger(Keys.EnemyAnimations.ATTACK);
+        this.animator.SetBool(Keys.EnemyAnimations.ATTACK_BOOL, true);
     }
 
     public void Hit()
@@ -96,11 +84,11 @@ public class BaseEnemy : MonoBehaviour {
         if (hp <= 0)
             Death();
         else
-            animator.SetTrigger(Keys.EnemyAnimations.HIT);
+            animator.SetBool(Keys.EnemyAnimations.HIT_BOOL, true);
     }
 
     private void Death() {
-        animator.SetTrigger(Keys.EnemyAnimations.DEATH);
+        animator.SetBool(Keys.EnemyAnimations.DEATH_BOOL, true);
         isDead = true;
         this.collider.enabled = false;
         //Destroy(this.gameObject);
