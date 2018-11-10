@@ -7,6 +7,11 @@ public class GameController : MonoBehaviour {
     UIController uiController;
     public UIController UIController { get {return uiController; } }
 
+    [SerializeField]
+    Player player;
+    public Player Player { get { return player; } }
+
+
     private void Awake()
     {
         Initialization();
