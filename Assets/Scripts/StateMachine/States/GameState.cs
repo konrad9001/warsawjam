@@ -15,7 +15,7 @@ public class GameState : BaseState, IGameView, IPlayer {
     public override void UpdateState(GameController controller)
     {
         base.UpdateState(controller);
-        MovePlayerView();
+        GetPlayerInput();
     }
 
     public override void DeinitState(GameController controller)
@@ -28,9 +28,9 @@ public class GameState : BaseState, IGameView, IPlayer {
         gameController.ChangeState(new MenuState());
     }
 
-    public void MovePlayerView()
+    public void GetPlayerInput()
     {
-        gameController.Player.GetInputMovement();
+        gameController.Player.GetPlayerInput();
     }
 
 }

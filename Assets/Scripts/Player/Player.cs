@@ -5,16 +5,23 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] PlayerWeapon playerWeapon;
     public IPlayer listener;
 
-    public void GetInputMovement()
+    public void GetPlayerInput()
     {
         MovePlayerLook();
+        CheckIfPlayerChangingWeapon();
     }
 
     void MovePlayerLook()
     {
         playerMovement.Move();
+    }
+
+    void CheckIfPlayerChangingWeapon()
+    {
+        playerWeapon.ChangeWeapon();
     }
 
     private void OnCollisionEnter(Collision collision)
