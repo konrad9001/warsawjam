@@ -8,7 +8,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Rigidbody playerRigidbody;
     [SerializeField] Camera mainCamera;
 
-
     //camera
     public void Move()
     {

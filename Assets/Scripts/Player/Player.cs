@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerWeapon playerWeapon;
     [SerializeField] PlayerShooting playerShooting;
     [SerializeField] Rigidbody rb;
+    [SerializeField] AudioSource clip;
     public IPlayer listener;
     float speed = 5f;
 
@@ -19,6 +20,13 @@ public class Player : MonoBehaviour
 
         float xMov = Input.GetAxisRaw("Horizontal");
         float yMov = Input.GetAxisRaw("Vertical");
+        if (xMov != 0 || yMov != 0)
+        {
+            if(!clip.isPlaying)
+                clip.Play();
+        }
+        else
+            clip.Stop();
 
         Vector3 temp = (transform.forward * yMov + transform.right * xMov) * speed * Time.deltaTime;
 

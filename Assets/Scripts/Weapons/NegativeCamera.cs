@@ -12,6 +12,7 @@ public class NegativeCamera : Weapon {
     bool isActive = true;
     float timeOfTheGame = 0f;
     public Light light;
+    [SerializeField] AudioSource clip;
     public struct GameChallanges
     {
         public bool mutantPhotoTaken;
@@ -124,6 +125,7 @@ public class NegativeCamera : Weapon {
         {
             cameraReloadTime = 7f;
             photosTaken++;
+            clip.Play();
             CheckIfMutantIsOnFoto();
             CheckIfFastEnemyIsOnThePhoto();
             CheckIfNormalEnemyIsOnThePhoto();
