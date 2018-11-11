@@ -21,7 +21,11 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
     {
         base.UpdateState(controller);
         if (Cursor.lockState != CursorLockMode.Locked && !gameController.UIController.GameViewController.WinView.gameObject.activeInHierarchy)
+        {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+            
         GetPlayerInput();
         UpdateEnemyStatus();
         if (gameController.Player.GetWieldedWeapon().Equals(Keys.Weapons.SHOTGUN))
@@ -37,6 +41,7 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
             {
                 gameController.UIController.GameViewController.GameOverView.ShowView();
                 Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
             }
                 
         }
@@ -163,6 +168,7 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
         gameController.negativeCamera.challenges.photographyOfTheVictimsCounter = sum;
         gameController.UIController.GameViewController.WinView.ShowView();
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
  
 }
