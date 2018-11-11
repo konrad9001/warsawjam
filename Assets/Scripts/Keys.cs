@@ -35,4 +35,10 @@ public class Keys : MonoBehaviour
         public static string CLAWS = "ClawsCollider";
     }
 
+    public class Sounds
+    {
+        public static string SCREAM = "scream";
+
+    }
+
 }

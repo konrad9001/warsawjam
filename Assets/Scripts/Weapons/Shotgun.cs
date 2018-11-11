@@ -9,6 +9,7 @@ public class Shotgun : Weapon
 
     [SerializeField] Camera rifle;
     [SerializeField] ParticleSystem shootParticle;
+    [SerializeField] ParticleSystem bloodParticle;
     [SerializeField] Transform shootPos;
     [SerializeField] Animator shotgunAnimator;
     [SerializeField] bool isReloaded = true;
@@ -45,9 +46,12 @@ public class Shotgun : Weapon
         shootParticle.Play();
         Debug.DrawRay(rifle.transform.position, rifle.transform.forward, Color.green);
         RaycastHit hitOut;
-        if (Physics.Raycast(rifle.transform.position, rifle.transform.forward, out hitOut, 40f, 1024))
+        if (Physics.Raycast(rifle.transform.position, rifle.transform.forward, out hitOut, 50f, 1024))
         {
+            bloodParticle.Stop();
             hitOut.collider.gameObject.GetComponent<BaseEnemy>().Hit();
+            bloodParticle.transform.position = hitOut.collider.transform.position;
+            bloodParticle.Play();
             Debug.Log("Damage!");
         }
     }
