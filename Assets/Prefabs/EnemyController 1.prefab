@@ -6457,6 +6457,7 @@ MonoBehaviour:
   - {fileID: 114218910652281268}
   - {fileID: 114398339546471014}
   - {fileID: 114728987864779322}
+  - {fileID: 114650012427060952}
   dynamicParent: {fileID: 0}
   playerCamera: {fileID: 0}
 --- !u!114 &114650012427060952

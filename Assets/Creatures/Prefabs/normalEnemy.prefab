@@ -2022,7 +2022,7 @@ MonoBehaviour:
   navAgent: {fileID: 195674288120516426}
   movement_speed: 0
   hp: 2
-  distanceToMove: 50
+  distanceToMove: 40
   distanceToAttack: 3
   animator: {fileID: 95307943405917096}
   renderer: {fileID: 137973771592533930}

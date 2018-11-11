@@ -2020,8 +2020,8 @@ MonoBehaviour:
   navAgent: {fileID: 195179497451617878}
   movement_speed: 0
   hp: 1
-  distanceToMove: 40
-  distanceToAttack: 12
+  distanceToMove: 60
+  distanceToAttack: 8
   animator: {fileID: 95611291383961084}
   renderer: {fileID: 137351363545937366}
   collider: {fileID: 136103305930109068}
