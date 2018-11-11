@@ -17,8 +17,8 @@ public class WinView : BaseView {
 
     public override void ShowView()
     {
-        foundVictims.text = listener.FoundVictims();
-        photographedMonsters.text = listener.PhotographedMonsters();
+        foundVictims.text = listener.FoundVictims()+"/4";
+        photographedMonsters.text = listener.PhotographedMonsters()+"/3";
         timeOfTheGame.text = string.Format("{0:00.00}", listener.TimeOfTheGame());
         killedMonsters.text = listener.KilledMonsters();
         base.ShowView();
