@@ -15,7 +15,7 @@ public class BaseEnemy : MonoBehaviour {
     [SerializeField]
     int hp;
     [SerializeField]
-    float distanceToRun;
+    float distanceToMove;
     [SerializeField]
     float distanceToAttack;
     [SerializeField]
@@ -55,12 +55,22 @@ public class BaseEnemy : MonoBehaviour {
     }
 
     public void UpdateEnemy(Transform playerTransform) {
-        //Debug.Log(CheckDistance(playerTransform.position, transform.position));
         if (isDead) return;
-        if (CheckDistance(playerTransform.position, transform.position) <= distanceToAttack)
+
+        float distance = CheckDistance(playerTransform.position, transform.position);
+
+        if (distance <= distanceToAttack)
             Attack();
-        else
+        else if (distance <= distanceToMove)
             MoveToPlayer(playerTransform);
+        else
+            BeIdle();
+    }
+
+    private void BeIdle()
+    {
+        navAgent.isStopped = true;
+        animator.SetFloat(Keys.EnemyAnimations.WALK_RUN_BLEND, 0f);
     }
 
     private void StopNavAgent()
