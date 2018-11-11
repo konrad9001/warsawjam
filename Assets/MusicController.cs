@@ -6,7 +6,10 @@ public class MusicController : MonoBehaviour {
 
     [SerializeField]
     List<AudioSource> audioToGet;
-
+    [SerializeField]
+    List<AudioSource> smallMonstersRandom;
+    [SerializeField]
+    List<AudioSource> bigMonsterRandom;
 
     public AudioSource GetAudioByName(string name)
     {
