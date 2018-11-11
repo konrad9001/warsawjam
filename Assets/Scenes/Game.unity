@@ -884,6 +884,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 196458322}
   m_CullTransparentMesh: 0
+--- !u!114 &229412933 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114728987864779322, guid: 8e19535e01285654c97cc83f701e9279,
+    type: 2}
+  m_PrefabInternal: {fileID: 346515487}
+  m_Script: {fileID: 11500000, guid: 8fe9a33690012dc4bb9377a3963d334a, type: 3}
 --- !u!1001 &346515487
 Prefab:
   m_ObjectHideFlags: 0
@@ -894,7 +900,7 @@ Prefab:
     - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
         type: 2}
       propertyPath: listOfEnemies.Array.size
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 4307993802734304, guid: 8e19535e01285654c97cc83f701e9279, type: 2}
       propertyPath: m_LocalPosition.x
@@ -937,25 +943,54 @@ Prefab:
         type: 2}
       propertyPath: listOfEnemies.Array.data[5]
       value: 
-      objectReference: {fileID: 425097627}
+      objectReference: {fileID: 738264868}
     - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
         type: 2}
       propertyPath: listOfEnemies.Array.data[6]
       value: 
-      objectReference: {fileID: 128187078}
+      objectReference: {fileID: 425097627}
     - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
         type: 2}
       propertyPath: listOfEnemies.Array.data[7]
       value: 
-      objectReference: {fileID: 1501781438}
+      objectReference: {fileID: 128187078}
     - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
         type: 2}
       propertyPath: listOfEnemies.Array.data[8]
       value: 
-      objectReference: {fileID: 1312111188}
+      objectReference: {fileID: 1501781438}
     - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
         type: 2}
       propertyPath: listOfEnemies.Array.data[9]
+      value: 
+      objectReference: {fileID: 1312111188}
+    - target: {fileID: 1946447985758816, guid: 8e19535e01285654c97cc83f701e9279, type: 2}
+      propertyPath: m_Name
+      value: EnemyController
+      objectReference: {fileID: 0}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 963834663}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 1682445263}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[2]
+      value: 
+      objectReference: {fileID: 2021575516}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[3]
+      value: 
+      objectReference: {fileID: 229412933}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[10]
       value: 
       objectReference: {fileID: 901046558}
     m_RemovedComponents: []
@@ -2332,6 +2367,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 700899703}
   m_CullTransparentMesh: 0
+--- !u!114 &738264868 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114619052140133686, guid: 07a468f3e899afb42a700f422cde9497,
+    type: 2}
+  m_PrefabInternal: {fileID: 939397962}
+  m_Script: {fileID: 11500000, guid: 8fe9a33690012dc4bb9377a3963d334a, type: 3}
 --- !u!1 &767509892
 GameObject:
   m_ObjectHideFlags: 0
@@ -2840,6 +2881,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 483bf3a6796afaf42985f3b3243311f2, type: 2}
   m_IsPrefabAsset: 0
+--- !u!114 &963834663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114398339546471014, guid: 8e19535e01285654c97cc83f701e9279,
+    type: 2}
+  m_PrefabInternal: {fileID: 346515487}
+  m_Script: {fileID: 11500000, guid: 89301d0381703ce4197fb6af4f3678c2, type: 3}
 --- !u!1001 &994496691
 Prefab:
   m_ObjectHideFlags: 0
@@ -4150,6 +4197,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1614451390}
   m_CullTransparentMesh: 0
+--- !u!114 &1682445263 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114650012427060952, guid: 8e19535e01285654c97cc83f701e9279,
+    type: 2}
+  m_PrefabInternal: {fileID: 346515487}
+  m_Script: {fileID: 11500000, guid: 89301d0381703ce4197fb6af4f3678c2, type: 3}
 --- !u!1 &1750755141
 GameObject:
   m_ObjectHideFlags: 0
@@ -4938,6 +4991,12 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1997992857}
   m_CullTransparentMesh: 0
+--- !u!114 &2021575516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114218910652281268, guid: 8e19535e01285654c97cc83f701e9279,
+    type: 2}
+  m_PrefabInternal: {fileID: 346515487}
+  m_Script: {fileID: 11500000, guid: f8a982afcae1cb24dac754c99f87b72e, type: 3}
 --- !u!1 &2061412351
 GameObject:
   m_ObjectHideFlags: 0
