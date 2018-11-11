@@ -86,7 +86,7 @@ public class PlayerWeapon : MonoBehaviour {
         shotgunAnimator.SetBool(Keys.WeaponsAnimations.ON, false);
         yield return new WaitForSeconds(0.533f);
         negativeCameraAnimator.SetBool(Keys.WeaponsAnimations.ON, true);
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.5f);
         currentWeapon = negativeCamera;
         shotgun.DeactivateShotgun();
         negativeCamera.ActivateCamera();
@@ -99,7 +99,7 @@ public class PlayerWeapon : MonoBehaviour {
         negativeCamera.DeactiveCamera();
         currentWeapon = shotgun;
         negativeCameraAnimator.SetBool(Keys.WeaponsAnimations.ON, false);
-        yield return new WaitForSeconds(1.1f);
+        yield return new WaitForSeconds(0.8f);
         shotgunAnimator.SetBool(Keys.WeaponsAnimations.ON, true);
         yield return new WaitForSeconds(0.533f);
         shotgun.ActivateShotgun();

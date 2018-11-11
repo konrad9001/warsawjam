@@ -66,6 +66,14 @@ public class Player : MonoBehaviour
         playerShooting.Shoot();
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "exit")
+        {
+            listener.WinOfTheGame();
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         {
