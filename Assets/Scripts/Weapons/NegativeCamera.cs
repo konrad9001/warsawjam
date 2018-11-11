@@ -180,8 +180,6 @@ public class NegativeCamera : Weapon {
     {
         if (listener.CheckShae())
         {
-            if (challenges.shaeFound)
-                challenges.photographyOfTheVictimsCounter++;
             challenges.shaeFound = true;
         }
             
@@ -191,8 +189,6 @@ public class NegativeCamera : Weapon {
     {
         if (listener.CheckRemy())
         {
-            if(challenges.remyFound)
-                challenges.photographyOfTheVictimsCounter++;
             challenges.remyFound = true;
             
         }
@@ -203,8 +199,6 @@ public class NegativeCamera : Weapon {
     {
         if (listener.CheckRegina())
         {
-            if (challenges.reginaFound)
-                challenges.photographyOfTheVictimsCounter++;
             challenges.reginaFound = true;
             
         }
@@ -214,8 +208,6 @@ public class NegativeCamera : Weapon {
     {
         if (listener.CheckMalcolm())
         {
-            if (challenges.malcolmFound)
-                challenges.photographyOfTheVictimsCounter++;
             challenges.malcolmFound = true;
             
         }

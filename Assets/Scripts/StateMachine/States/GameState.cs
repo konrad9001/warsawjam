@@ -150,6 +150,17 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
 
     public void WinOfTheGame()
     {
+
+        int sum = 0;
+        if (gameController.negativeCamera.challenges.malcolmFound)
+            sum++;
+        if (gameController.negativeCamera.challenges.remyFound)
+            sum++;
+        if (gameController.negativeCamera.challenges.reginaFound)
+            sum++;
+        if (gameController.negativeCamera.challenges.shaeFound)
+            sum++;
+        gameController.negativeCamera.challenges.photographyOfTheVictimsCounter = sum;
         gameController.UIController.GameViewController.WinView.ShowView();
         Cursor.lockState = CursorLockMode.None;
     }
