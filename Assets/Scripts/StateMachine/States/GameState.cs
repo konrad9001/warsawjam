@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameState : BaseState, IGameView, IPlayer, INegativeCamera{
-
+public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinView, IGameOverView{
+    
     public override void InitState(GameController controller)
     {
         base.InitState(controller);
@@ -12,6 +12,7 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera{
         this.gameController.Player.listener = this;
         gameController.EnemyController.DisableRenderers();
         gameController.gun.gameObject.SetActive(true);
+        this.gameController.UIController.GameViewController.WinView.listener = this;
         this.gameController.Player.GetComponent<PlayerWeapon>().GetCamera().listener = this;
     }
 
@@ -27,6 +28,10 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera{
         gameController.Player.GetPlayerShooting().UpdateTime();
         gameController.Player.GetNegativeCamera().UpdateTimer();
         gameController.EnemyController.UpdateEnemySeenStatus();
+        gameController.Player.GetComponent<PlayerWeapon>().GetCamera().UpdateNumberOfDeathOponent();
+        if (Input.GetKeyDown(KeyCode.B))
+            WinOfTheGame();
+            
     }
 
     public override void DeinitState(GameController controller)
@@ -81,4 +86,42 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera{
     {
         return gameController.EnemyController.CheckIfFast();
     }
+
+    public int GetNumberOfDeathOponent()
+    {
+        return gameController.EnemyController.GetNumberOfDeathOponent();
+    }
+
+    public string FoundVictims()
+    {
+        return gameController.negativeCamera.GetChallenges().photographyOfTheVictimsCounter.ToString();
+    }
+
+    public string PhotographedMonsters()
+    {
+        int sum = 0;
+        if (gameController.negativeCamera.GetChallenges().fastEnemyPhotoTaken)
+            sum++;
+        if (gameController.negativeCamera.GetChallenges().slowEnemyPhotoTaken)
+            sum++;
+        if (gameController.negativeCamera.GetChallenges().mutantPhotoTaken)
+            sum++;
+        return sum.ToString();
+    }
+
+    public float TimeOfTheGame()
+    {
+        return gameController.negativeCamera.GetChallenges().timeOfTheGame;
+    }
+
+    public string KilledMonsters()
+    {
+        return gameController.negativeCamera.GetChallenges().enemyKillCounter.ToString();
+    }
+
+    public void WinOfTheGame()
+    {
+        gameController.UIController.GameViewController.WinView.ShowView();
+    }
+
 }

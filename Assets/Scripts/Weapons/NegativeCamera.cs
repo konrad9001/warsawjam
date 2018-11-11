@@ -10,6 +10,7 @@ public class NegativeCamera : Weapon {
     int photosToCompleteChallange = 7;
     float cameraReloadTime = 7f;
     bool isActive = true;
+    float timeOfTheGame = 0f;
     public struct GameChallanges
     {
         public bool mutantPhotoTaken;
@@ -47,6 +48,7 @@ public class NegativeCamera : Weapon {
 
     public override void UpdateTimer()
     {
+        challenges.timeOfTheGame += Time.deltaTime;
         if(cameraUIAnim.GetBool(Keys.WeaponsAnimations.ON))
             StartCoroutine(wait());
         cameraReloadTime -= Time.deltaTime;
@@ -66,6 +68,11 @@ public class NegativeCamera : Weapon {
         counter.text = photosTaken + "/7";
         if (photosTaken.Equals(photosToCompleteChallange))
             counter.text = "7/7 RUN!";
+    }
+
+    public void UpdateNumberOfDeathOponent()
+    {
+        challenges.enemyKillCounter = listener.GetNumberOfDeathOponent();
     }
 
     public int GetCounter()
@@ -117,6 +124,7 @@ public class NegativeCamera : Weapon {
             Debug.Log(challenges.mutantPhotoTaken);
             Debug.Log(challenges.fastEnemyPhotoTaken);
             Debug.Log(challenges.slowEnemyPhotoTaken);
+            Debug.Log(challenges.enemyKillCounter);
         }   
         else
             Debug.Log("Camera is not ready yet");
@@ -154,6 +162,11 @@ public class NegativeCamera : Weapon {
     {
         if (listener.CheckFast())
             challenges.fastEnemyPhotoTaken = true;
+    }
+
+    public GameChallanges GetChallenges()
+    {
+        return challenges;
     }
 
 }

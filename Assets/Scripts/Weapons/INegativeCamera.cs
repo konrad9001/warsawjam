@@ -6,5 +6,6 @@ public interface INegativeCamera  {
     bool CheckMutant();
     bool CheckNormal();
     bool CheckFast();
+    int GetNumberOfDeathOponent();
 	
 }

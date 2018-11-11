@@ -43,6 +43,16 @@ public class EnemyController : MonoBehaviour {
         return false;
     }
 
+    public int GetNumberOfDeathOponent()
+    {
+        int sum = 0;
+        foreach (var val in listOfEnemies)
+        {
+            sum += val.GetNumberOfDeathOponent();
+        }
+        return sum;
+    }
+
     public void UpdateEnemies(Transform playerTransform)
     {
         foreach(BaseEnemy b in listOfEnemies)
