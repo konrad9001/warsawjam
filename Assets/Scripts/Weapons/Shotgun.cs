@@ -16,6 +16,7 @@ public class Shotgun : Weapon
 
     [SerializeField] AudioSource shotAudio;
     [SerializeField] AudioSource reloadAudio;
+    [SerializeField] AudioSource bloodAudio;
 
     bool isActive = true;
 
@@ -56,6 +57,7 @@ public class Shotgun : Weapon
         {
             hitOut.collider.gameObject.GetComponent<BaseEnemy>().Hit();
             Instantiate(bloodParticle, hitOut.collider.transform.position + Vector3.up, Quaternion.identity);
+            bloodAudio.Play();
             Debug.Log("Damage!");
         }
     }

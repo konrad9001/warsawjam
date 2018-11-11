@@ -21,6 +21,7 @@ public class Keys : MonoBehaviour
         public static string ATTACK_BOOL = "AttackBool";
         public static string HIT_BOOL = "HitBool";
         public static string DEATH_BOOL = "DeathBool";
+        public static string PLAYER_SEEN = "PlayerSeen";
 
     }
 

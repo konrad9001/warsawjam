@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] PlayerShooting playerShooting;
     [SerializeField] Rigidbody rb;
     [SerializeField] AudioSource clip;
+    [SerializeField] MusicController musicController;
     public IPlayer listener;
     float speed = 5f;
 
@@ -89,6 +90,9 @@ public class Player : MonoBehaviour
                 listener.PlayerIsDead();
             rb.constraints = RigidbodyConstraints.None;
             rb.AddForce(other.gameObject.transform.forward*50f, ForceMode.Impulse);
+            AudioSource temp = musicController.GetRandomBlood();
+            temp.gameObject.transform.SetParent(transform);
+            temp.Play();
         }
     }
 }

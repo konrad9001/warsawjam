@@ -11,6 +11,8 @@ public class EnemyController : MonoBehaviour {
     private GameObject dynamicParent;
     [SerializeField]
     private Camera playerCamera;
+    [SerializeField]
+    private MusicController musicController;
 
     public void UpdateEnemySeenStatus()
     {
@@ -90,7 +92,7 @@ public class EnemyController : MonoBehaviour {
         foreach(BaseEnemy b in listOfEnemies)
         {
             if (!b.name.Contains("@"))
-                b.UpdateEnemy(playerTransform);
+                b.UpdateEnemy(playerTransform, musicController);
         }
     }
 

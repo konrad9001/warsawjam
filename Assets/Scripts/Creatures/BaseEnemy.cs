@@ -28,6 +28,7 @@ public class BaseEnemy : MonoBehaviour {
     Collider attackCollider;
     int numberOfDeathOponent;
     bool seen;
+    float time;
 
     private bool isDead=false;
 
@@ -36,6 +37,7 @@ public class BaseEnemy : MonoBehaviour {
         Assert.IsNotNull(navAgent, "navAgent in " + this.ToString() + " is absent");
         Assert.IsNotNull(animator, "animator in " + this.ToString() + " is absent");
         Assert.IsNotNull(renderer, "renderer in " + this.ToString() + " is absent");*/
+        time = 0f;
     }
 
     public Renderer GetRenderer()
@@ -54,18 +56,34 @@ public class BaseEnemy : MonoBehaviour {
         return seen;
     }
 
-    public void UpdateEnemy(Transform playerTransform) {
+    public void UpdateEnemy(Transform playerTransform, MusicController mc) {
         if (isDead) return;
+
+        
 
         float distance = CheckDistance(playerTransform.position, transform.position);
 
         if (distance <= distanceToAttack)
             Attack();
         else if (distance <= distanceToMove)
+        {
             MoveToPlayer(playerTransform);
-        else
-            BeIdle();
+            PlaySomeGrowl(mc);
+        }
     }
+
+    private void PlaySomeGrowl(MusicController mc)
+    {
+        time -= Time.deltaTime;
+        if(time<=0f)
+        {
+            AudioSource temp = mc.GetRandomMonsterAudio();
+            temp.gameObject.transform.SetParent(this.gameObject.transform);
+            temp.Play();
+            time = Random.Range(7f, 30f);
+        }
+    }
+
 
     private void BeIdle()
     {

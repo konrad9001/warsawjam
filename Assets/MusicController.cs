@@ -11,13 +11,14 @@ public class MusicController : MonoBehaviour {
     [SerializeField]
     List<AudioSource> bigMonsterRandom;
 
-    public AudioSource GetAudioByName(string name)
+    public AudioSource GetRandomBlood()
     {
-        foreach(AudioSource a in audioToGet)
-        {
-            if (a.name.Equals(name))
-                return a;
-        }
-        return null;
+        return audioToGet[Random.Range(0, 2)];
     }
+
+    public AudioSource GetRandomMonsterAudio()
+    {
+        return bigMonsterRandom[Random.Range(0, bigMonsterRandom.Count)];
+    }
+
 }
