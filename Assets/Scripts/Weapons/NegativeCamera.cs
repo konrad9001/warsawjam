@@ -11,11 +11,16 @@ public class NegativeCamera : Weapon {
     float cameraReloadTime = 7f;
     bool isActive = true;
     float timeOfTheGame = 0f;
+    public Light light;
     public struct GameChallanges
     {
         public bool mutantPhotoTaken;
         public bool slowEnemyPhotoTaken;
         public bool fastEnemyPhotoTaken;
+        public bool shaeFound;
+        public bool remyFound;
+        public bool reginaFound;
+        public bool malcolmFound;
         public int enemyKillCounter;
         public int photographyOfTheVictimsCounter;
         public float timeOfTheGame;
@@ -27,6 +32,10 @@ public class NegativeCamera : Weapon {
         challenges.mutantPhotoTaken = false;
         challenges.slowEnemyPhotoTaken = false;
         challenges.fastEnemyPhotoTaken = false;
+        challenges.shaeFound = false;
+        challenges.remyFound = false;
+        challenges.reginaFound = false;
+        challenges.malcolmFound = false;
         challenges.enemyKillCounter = 0;
         challenges.photographyOfTheVictimsCounter = 0;
         challenges.timeOfTheGame = 0f;
@@ -118,13 +127,16 @@ public class NegativeCamera : Weapon {
             CheckIfMutantIsOnFoto();
             CheckIfFastEnemyIsOnThePhoto();
             CheckIfNormalEnemyIsOnThePhoto();
+            CheckIfReginaOnThePhoto();
+            CheckIfShaeOnThePhoto();
+            CheckIfMalcolmOnThePhoto();
+            CheckIfRemyOnThePhoto();
             cameraUIAnim.SetBool(Keys.WeaponsAnimations.ON, true);
             Debug.Log("Photo taken");
             UpdatePhotoTaken();
-            Debug.Log(challenges.mutantPhotoTaken);
-            Debug.Log(challenges.fastEnemyPhotoTaken);
-            Debug.Log(challenges.slowEnemyPhotoTaken);
-            Debug.Log(challenges.enemyKillCounter);
+
+            if (challenges.shaeFound && challenges.remyFound && challenges.reginaFound && challenges.malcolmFound)
+                light.gameObject.SetActive(true);
         }   
         else
             Debug.Log("Camera is not ready yet");
@@ -162,6 +174,51 @@ public class NegativeCamera : Weapon {
     {
         if (listener.CheckFast())
             challenges.fastEnemyPhotoTaken = true;
+    }
+
+    public void CheckIfShaeOnThePhoto()
+    {
+        if (listener.CheckShae())
+        {
+            if (challenges.shaeFound)
+                challenges.photographyOfTheVictimsCounter++;
+            challenges.shaeFound = true;
+        }
+            
+    }
+
+    public void CheckIfRemyOnThePhoto()
+    {
+        if (listener.CheckRemy())
+        {
+            if(challenges.remyFound)
+                challenges.photographyOfTheVictimsCounter++;
+            challenges.remyFound = true;
+            
+        }
+            
+    }
+
+    public void CheckIfReginaOnThePhoto()
+    {
+        if (listener.CheckRegina())
+        {
+            if (challenges.reginaFound)
+                challenges.photographyOfTheVictimsCounter++;
+            challenges.reginaFound = true;
+            
+        }
+    }
+
+    public void CheckIfMalcolmOnThePhoto()
+    {
+        if (listener.CheckMalcolm())
+        {
+            if (challenges.malcolmFound)
+                challenges.photographyOfTheVictimsCounter++;
+            challenges.malcolmFound = true;
+            
+        }
     }
 
     public GameChallanges GetChallenges()

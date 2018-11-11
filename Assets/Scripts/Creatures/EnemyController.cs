@@ -43,6 +43,38 @@ public class EnemyController : MonoBehaviour {
         return false;
     }
 
+    public bool CheckIfShae()
+    {
+        foreach (var val in listOfEnemies)
+            if (val.name.Equals("shae@Zombie Dying"))
+                return val.GetSeen();
+        return false;
+    }
+
+    public bool CheckIfRemy()
+    {
+        foreach (var val in listOfEnemies)
+            if (val.name.Equals("remy@Zombie Dying"))
+                return val.GetSeen();
+        return false;
+    }
+
+    public bool CheckIfRegina()
+    {
+        foreach (var val in listOfEnemies)
+            if (val.name.Equals("regina@Zombie Dying"))
+                return val.GetSeen();
+        return false;
+    }
+
+    public bool CheckIfMalcolm()
+    {
+        foreach (var val in listOfEnemies)
+            if (val.name.Equals("malcolm@Zombie Dying"))
+                return val.GetSeen();
+        return false;
+    }
+
     public int GetNumberOfDeathOponent()
     {
         int sum = 0;
@@ -57,7 +89,8 @@ public class EnemyController : MonoBehaviour {
     {
         foreach(BaseEnemy b in listOfEnemies)
         {
-            b.UpdateEnemy(playerTransform);
+            if (!b.name.Contains("@"))
+                b.UpdateEnemy(playerTransform);
         }
     }
 
@@ -65,7 +98,8 @@ public class EnemyController : MonoBehaviour {
     {
         foreach(BaseEnemy b in listOfEnemies)
         {
-            b.GetRenderer().enabled = false;
+            if (!b.name.Contains("@"))
+                b.GetRenderer().enabled = false;
         }
     }
 
@@ -73,7 +107,8 @@ public class EnemyController : MonoBehaviour {
     {
         foreach(BaseEnemy b in listOfEnemies)
         {
-            b.GetRenderer().enabled = true;
+            if(!b.name.Contains("@"))
+                b.GetRenderer().enabled = true;
         }
     }
 	

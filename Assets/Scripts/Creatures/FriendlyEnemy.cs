@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IPlayer{
-    void PlayerIsDead();
-    void WinOfTheGame();
+public class FriendlyEnemy : BaseEnemy {
+
 }

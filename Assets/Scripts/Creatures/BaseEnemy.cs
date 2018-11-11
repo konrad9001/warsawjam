@@ -5,7 +5,7 @@ using UnityEngine.AI;
 using UnityEngine.Assertions;
 
 
-[RequireComponent(typeof(NavMeshAgent), typeof(Animator), typeof(Collider))]
+
 public class BaseEnemy : MonoBehaviour {
 
     [SerializeField, ]
@@ -32,10 +32,10 @@ public class BaseEnemy : MonoBehaviour {
     private bool isDead=false;
 
     private void OnEnable()
-    {
+    {/*
         Assert.IsNotNull(navAgent, "navAgent in " + this.ToString() + " is absent");
         Assert.IsNotNull(animator, "animator in " + this.ToString() + " is absent");
-        Assert.IsNotNull(renderer, "renderer in " + this.ToString() + " is absent");
+        Assert.IsNotNull(renderer, "renderer in " + this.ToString() + " is absent");*/
     }
 
     public Renderer GetRenderer()

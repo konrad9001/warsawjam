@@ -20,7 +20,7 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
     public override void UpdateState(GameController controller)
     {
         base.UpdateState(controller);
-        if (Cursor.lockState != CursorLockMode.Locked)
+        if (Cursor.lockState != CursorLockMode.Locked && !gameController.UIController.GameViewController.WinView.gameObject.activeInHierarchy)
             Cursor.lockState = CursorLockMode.Locked;
         GetPlayerInput();
         UpdateEnemyStatus();
@@ -96,6 +96,26 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
         return gameController.EnemyController.CheckIfFast();
     }
 
+    public bool CheckShae()
+    {
+        return gameController.EnemyController.CheckIfShae();
+    }
+
+    public bool CheckRegina()
+    {
+        return gameController.EnemyController.CheckIfRegina();
+    }
+
+    public bool CheckRemy()
+    {
+        return gameController.EnemyController.CheckIfRemy();
+    }
+
+    public bool CheckMalcolm()
+    {
+        return gameController.EnemyController.CheckIfMalcolm();
+    }
+
     public int GetNumberOfDeathOponent()
     {
         return gameController.EnemyController.GetNumberOfDeathOponent();
@@ -131,6 +151,7 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
     public void WinOfTheGame()
     {
         gameController.UIController.GameViewController.WinView.ShowView();
+        Cursor.lockState = CursorLockMode.None;
     }
-
+ 
 }
