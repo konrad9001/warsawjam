@@ -18,6 +18,8 @@ public class GameController : MonoBehaviour {
     public GameObject cam;
     public GameObject gun;
 
+    public NegativeCamera negativeCamera;
+
 
     private void Awake()
     {

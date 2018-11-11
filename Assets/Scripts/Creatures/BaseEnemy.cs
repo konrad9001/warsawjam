@@ -26,7 +26,7 @@ public class BaseEnemy : MonoBehaviour {
     Collider collider;
     [SerializeField]
     Collider attackCollider;
-
+    int numberOfDeathOponent;
     bool seen;
 
     private bool isDead=false;
@@ -103,9 +103,12 @@ public class BaseEnemy : MonoBehaviour {
         animator.SetBool(Keys.EnemyAnimations.DEATH_BOOL, true);
         isDead = true;
         this.collider.enabled = false;
+        numberOfDeathOponent++;
         //Destroy(this.gameObject);
     }
 
-
-
+    public int GetNumberOfDeathOponent()
+    {
+        return numberOfDeathOponent;
+    }
 }
