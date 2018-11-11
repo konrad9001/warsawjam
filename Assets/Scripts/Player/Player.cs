@@ -71,6 +71,8 @@ public class Player : MonoBehaviour
         {
             if (other.gameObject.tag.Equals(Keys.Tags.CLAWS))
                 listener.PlayerIsDead();
+            rb.constraints = RigidbodyConstraints.None;
+            rb.AddForce(other.gameObject.transform.forward*50f, ForceMode.Impulse);
         }
     }
 }

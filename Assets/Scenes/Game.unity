@@ -1272,7 +1272,7 @@ Prefab:
   m_IsPrefabAsset: 0
 --- !u!114 &476510492 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114005864314850154, guid: 093a96024c65c0a4db0a53c78c384d10,
+  m_CorrespondingSourceObject: {fileID: 114021590157113820, guid: 093a96024c65c0a4db0a53c78c384d10,
     type: 2}
   m_PrefabInternal: {fileID: 623981069}
   m_Script: {fileID: 11500000, guid: 7c3224f0f802ec84e9eff4c0434952f5, type: 3}
@@ -1707,69 +1707,44 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalPosition.x
       value: 129.83734
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalPosition.y
       value: -121.66264
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalPosition.z
       value: 476.84738
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalRotation.y
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4694655349696150, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
+    - target: {fileID: 4808997130225764, guid: 093a96024c65c0a4db0a53c78c384d10, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114822899008746490, guid: 093a96024c65c0a4db0a53c78c384d10,
+    - target: {fileID: 114021590157113820, guid: 093a96024c65c0a4db0a53c78c384d10,
         type: 2}
       propertyPath: dynamicParent
       value: 
       objectReference: {fileID: 124804066}
-    - target: {fileID: 114822899008746490, guid: 093a96024c65c0a4db0a53c78c384d10,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 557602397}
-    - target: {fileID: 114005864314850154, guid: 093a96024c65c0a4db0a53c78c384d10,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 557602397}
-    - target: {fileID: 114005864314850154, guid: 093a96024c65c0a4db0a53c78c384d10,
-        type: 2}
-      propertyPath: dynamicParent
-      value: 
-      objectReference: {fileID: 124804066}
-    - target: {fileID: 114092278093536232, guid: 093a96024c65c0a4db0a53c78c384d10,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 557602397}
-    - target: {fileID: 114535759527631466, guid: 093a96024c65c0a4db0a53c78c384d10,
-        type: 2}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 557602397}
-    - target: {fileID: 114863010813222732, guid: 093a96024c65c0a4db0a53c78c384d10,
+    - target: {fileID: 114021590157113820, guid: 093a96024c65c0a4db0a53c78c384d10,
         type: 2}
       propertyPath: playerCamera
       value: 
