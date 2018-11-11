@@ -48,10 +48,8 @@ public class Shotgun : Weapon
         RaycastHit hitOut;
         if (Physics.Raycast(rifle.transform.position, rifle.transform.forward, out hitOut, 50f, 1024))
         {
-            bloodParticle.Stop();
             hitOut.collider.gameObject.GetComponent<BaseEnemy>().Hit();
-            bloodParticle.transform.position = hitOut.collider.transform.position;
-            bloodParticle.Play();
+            Instantiate(bloodParticle, hitOut.collider.transform.position + Vector3.up, Quaternion.identity);
             Debug.Log("Damage!");
         }
     }
