@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class WinView : BaseView {
     public Text foundVictims;
     public Text photographedMonsters;
@@ -21,5 +22,10 @@ public class WinView : BaseView {
         timeOfTheGame.text = string.Format("{0:00.00}", listener.TimeOfTheGame());
         killedMonsters.text = listener.KilledMonsters();
         base.ShowView();
+    }
+
+    public void Back()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

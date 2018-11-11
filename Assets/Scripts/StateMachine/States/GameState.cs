@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinView, IGameOverView{
-    
+    float dead = 2f;
+    bool start = false;
     public override void InitState(GameController controller)
     {
         base.InitState(controller);
@@ -29,9 +30,17 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
         gameController.Player.GetNegativeCamera().UpdateTimer();
         gameController.EnemyController.UpdateEnemySeenStatus();
         gameController.Player.GetComponent<PlayerWeapon>().GetCamera().UpdateNumberOfDeathOponent();
-        if (Input.GetKeyDown(KeyCode.B))
-            WinOfTheGame();
-            
+        if (start)
+        {
+            dead -= Time.deltaTime;
+            if (dead < 0)
+            {
+                gameController.UIController.GameViewController.GameOverView.ShowView();
+                Cursor.lockState = CursorLockMode.None;
+            }
+                
+        }
+           
     }
 
     public override void DeinitState(GameController controller)
@@ -69,7 +78,7 @@ public class GameState : BaseState, IGameView, IPlayer, INegativeCamera, IWinVie
 
     public void PlayerIsDead()
     {
-        Debug.LogError("PlayerIsDead, but nothing happens!!! Karol Pozdrawia :*");
+        start = true;
     }
 
     public bool CheckMutant()
