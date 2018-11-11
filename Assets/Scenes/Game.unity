@@ -1986,7 +1986,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100032, guid: efa0ffb25d2617d449321f494ee932b9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: efa0ffb25d2617d449321f494ee932b9, type: 3}
       propertyPath: m_LocalPosition.x
