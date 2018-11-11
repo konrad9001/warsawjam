@@ -14,6 +14,9 @@ public class Shotgun : Weapon
     [SerializeField] Animator shotgunAnimator;
     [SerializeField] bool isReloaded = true;
 
+    [SerializeField] AudioSource shotAudio;
+    [SerializeField] AudioSource reloadAudio;
+
     bool isActive = true;
 
     public void ActivateShotgun()
@@ -41,6 +44,9 @@ public class Shotgun : Weapon
     public override void Shoot()
     {
         isReloaded = false;
+
+        shotAudio.Play();
+
         Debug.Log("ShootingFromShotgun");
         shootParticle.transform.position = shootPos.position;
         shootParticle.Play();
@@ -64,6 +70,7 @@ public class Shotgun : Weapon
 
     public IEnumerator ReloadWeapon()
     {
+        reloadAudio.Play();
         shotgunAnimator.SetBool(Keys.WeaponsAnimations.RELOAD, true);
         yield return new WaitForSeconds(0.5f);
         shotgunAnimator.SetBool(Keys.WeaponsAnimations.RELOAD, false);
