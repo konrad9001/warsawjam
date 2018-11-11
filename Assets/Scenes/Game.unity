@@ -710,14 +710,14 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!108 &170076734
 Light:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 170076733}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
@@ -900,7 +900,7 @@ Prefab:
     - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
         type: 2}
       propertyPath: listOfEnemies.Array.size
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4307993802734304, guid: 8e19535e01285654c97cc83f701e9279, type: 2}
       propertyPath: m_LocalPosition.x
@@ -992,7 +992,27 @@ Prefab:
         type: 2}
       propertyPath: listOfEnemies.Array.data[10]
       value: 
-      objectReference: {fileID: 901046558}
+      objectReference: {fileID: 35272526}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: playerCamera
+      value: 
+      objectReference: {fileID: 557602397}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[11]
+      value: 
+      objectReference: {fileID: 35272525}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[12]
+      value: 
+      objectReference: {fileID: 35272524}
+    - target: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
+        type: 2}
+      propertyPath: listOfEnemies.Array.data[13]
+      value: 
+      objectReference: {fileID: 35272523}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e19535e01285654c97cc83f701e9279, type: 2}
   m_IsPrefabAsset: 0
@@ -1528,7 +1548,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 4ce737f99b5deb842a11bd0528bbe040, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 4ce737f99b5deb842a11bd0528bbe040, type: 3}
       propertyPath: m_Controller
@@ -2708,12 +2728,12 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07a468f3e899afb42a700f422cde9497, type: 2}
   m_IsPrefabAsset: 0
---- !u!114 &901046558 stripped
+--- !u!114 &911284499 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 114619052140133686, guid: 07a468f3e899afb42a700f422cde9497,
+  m_CorrespondingSourceObject: {fileID: 114646845826955858, guid: 8e19535e01285654c97cc83f701e9279,
     type: 2}
-  m_PrefabInternal: {fileID: 901046557}
-  m_Script: {fileID: 11500000, guid: 8fe9a33690012dc4bb9377a3963d334a, type: 3}
+  m_PrefabInternal: {fileID: 346515487}
+  m_Script: {fileID: 11500000, guid: 7c3224f0f802ec84e9eff4c0434952f5, type: 3}
 --- !u!1001 &939397962
 Prefab:
   m_ObjectHideFlags: 0
@@ -2962,7 +2982,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiController: {fileID: 433962804}
   player: {fileID: 13641522}
-  enemyController: {fileID: 0}
+  enemyController: {fileID: 911284499}
   cam: {fileID: 1276519661}
   gun: {fileID: 1982111868}
   negativeCamera: {fileID: 1276519662}
